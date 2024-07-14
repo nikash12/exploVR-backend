@@ -1,20 +1,13 @@
-import express from 'express';
-import bodyParser from 'body-parser';
+import express from 'express'
 import cors from 'cors'
-
+import dotenv from 'dotenv'
+import bodyParser from 'body-parser';
 const app = express();
+dotenv.config()
 
-
-
-// Register routes
-app.use(cors());
-app.use(bodyParser.json())
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
-
-
-import userRouter from './routes/user.router.js';
-app.use("/", userRouter );
-// Export the Express application instance
-export default app;
-
+app.use(cors({
+    origin : "*",
+    credentials: true
+}))
+app.use(bodyParser.json());
+export  {app};
